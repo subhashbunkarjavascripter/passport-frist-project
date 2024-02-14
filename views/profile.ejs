@@ -1,0 +1,77 @@
+<% include ./partials/header.ejs %>
+
+    <form id="uploadpic" action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" id="fileinp">
+    </form>
+
+
+    <div class="container py-3">    
+          <div class="d-flex" >
+            <h4 class="mb-3">Profile</h4>            
+                      <div class="flex">
+                        <div class="parentcircle">
+                          <div class="pencil"><i class="ri-pencil-line"></i></div>              
+                                    <div class="image">
+                                      <img src="./images/uploads/<%=founduser.image%>" class="card-img-top" alt="...">
+                                    </div>
+                        </div>
+                      </div>
+                        <div class="intro">
+                          <h5 style="text-transform: capitalize;">@<%=founduser.username%></h5>
+                          <p style="font-size: 400; margin-top: -5px;">kuchh karta hai</p>
+                          <a class=" btn btn-success" style="margin-top: -1rem;" href="/edit">edit profile</a>
+                          <a class="btn btn-danger" style="margin-left: 2rem; margin-top: -1rem; " href="/resetpassword">Reset Password</a>
+                        </div>
+
+          </div>
+    </div>
+
+    <div class="container">
+      <h3>Create a new Post</h3>
+      <form action="/post" method="post">
+        <label for="floatingtextarea">What's on your mind</label> <br><br>
+        <div class="post">
+          <textarea name="post" id="floatingtextarea" placeholder="Leave a comment Here."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <div class="container mt-4">
+      <h3> All post by you</h3>
+      <%founduser.post.reverse().forEach(function(post){%>
+        <div class="card mt-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> @<%= founduser.username%></h5>
+             
+            <p class="card-text"><%=post.data%></p>
+
+            <p style="font-weight: 600;" class="text-primary"><%=post.likes.length %> Likes</p>
+
+            <a href="/like/<%= post._id %>" class="btn <%= post.likes.indexOf(founduser.id)=== -1?'btn-primary': 'btn-danger' %>">
+              <%= post.likes.indexOf(founduser.id)=== -1? "like" : "unlike" %>
+            </a>
+            </div>
+        </div>
+      <%})%>
+
+
+    </div>
+
+
+
+
+    <script>
+      document.querySelector(".pencil")
+      .addEventListener("click",function(){
+        document.querySelector("#fileinp").click();
+      })
+      document.querySelector("#fileinp")
+      .addEventListener("change",function(){
+        document.querySelector("#uploadpic").submit();
+      })
+    </script>
+
+
+<% include ./partials/footer.ejs %>
+ 

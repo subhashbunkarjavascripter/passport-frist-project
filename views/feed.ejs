@@ -1,0 +1,28 @@
+<% include ./partials/header.ejs %>
+ 
+
+<div class="container py-3">
+  <h3>Feed</h3>
+  <p>All post by Bhopal</p>
+  <hr>
+  
+  <% allposts.reverse().forEach(function(post){%>
+    <div class="card mt-3" style="width: 28rem;">
+      <div class="card-body">
+        <h5 class="card-title">@<%= post.userid ? post.userid.username : 'Unknown User' %></h5>
+        <p class="card-text"><%= post.data %></p>
+        <p style="font-weight: 600;" class="text-primary"><%= post.likes.length %> Likes</p>
+        <a href="/like/<%= post._id %>" class="btn <%= post.likes.indexOf(user.id) === -1 ? 'btn-primary' : 'btn-danger' %>">
+          <%= post.likes.indexOf(user.id) === -1 ? "like" : "unlike" %>
+        </a>
+      </div>
+    </div>
+    
+
+  <%})  %>
+</div>
+
+
+
+<% include ./partials/footer.ejs %>
+ 

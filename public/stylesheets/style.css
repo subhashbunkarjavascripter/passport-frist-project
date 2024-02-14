@@ -1,0 +1,71 @@
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "gilroy";
+ }
+ html,body{
+  width: 100%;
+  height: 100%;
+ }
+
+
+ .image{
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #df3f3fd1;
+ }
+ 
+.image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ }
+ textarea{
+   height: 2vw;
+   font-weight: 600;
+   outline: none;
+   width: 35vw;
+   height: 5vw;
+   
+ }
+ .intro{
+    position: absolute;
+    top: 15%;
+    left: 25%;
+ }
+
+ .flex{
+    position: relative;
+    display: flex;
+    gap: 20px;
+ }
+ .parentcircle{
+    position: relative;
+ }
+ .pencil{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    right: 5px;
+    top: 5px;
+    opacity: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0,3);
+ }
+ .pencil i{
+   opacity: .7;
+   font-size: 15px;
+ }
+ .parentcircle:hover.pencil{
+   opacity: 0;
+ }
+ #uploadpic{
+   display: none;
+ }
